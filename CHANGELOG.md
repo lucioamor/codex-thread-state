@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0 — 2026-09-28
+
+- Replaced cross-process live-state guessing with an event-authoritative reducer and local store.
+- Added `waiting_on_user`, configurable themes, profiles, modifiers and context/long-run telemetry.
+- Added atomic thread records, intent/applied journal, snapshots, granular conflict-safe rollback and clean.
+- Added late reconciliation, three-attempt `Stop` reads, legacy migration and sanitized fixture capture.
+- Added preview, status/doctor, render-all, on/off and profile commands.
+- Split runtime into pure reducer/renderer, evidence sources and a single title-writer boundary.
+- Kept the v0.1 Python API and source entry point compatible where practical.
+- Preserved the installed v0.1 sources and architecture without private runtime
+  data, and documented the executed local migration to trusted v0.2 hooks.
+- Restored structured project slugs with existing-tag, configured-root, Git-origin
+  and checkout-directory precedence; legacy state markers now seed migrated views.
+
 ## 0.1.0 — 2026-09-28
 
 - Established Thread State branding, `/thread-state` skill and repository identity.

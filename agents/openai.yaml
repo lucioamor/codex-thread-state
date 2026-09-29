@@ -1,0 +1,5 @@
+name: thread-state
+description: Deterministic, reversible Codex thread-title state badges.
+instructions: >-
+  Preserve editorial titles, use structured lifecycle evidence only, keep all
+  title writes journaled and reversible, and never infer state from prose.

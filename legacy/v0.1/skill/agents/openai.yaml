@@ -1,0 +1,4 @@
+interface:
+  display_name: "Thread Status"
+  short_description: "Classifica e atualiza prefixos de estado das conversas"
+  default_prompt: "Revise os estados das conversas recentes e proponha ou aplique prefixos de status com backup e rollback."

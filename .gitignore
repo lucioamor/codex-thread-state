@@ -1,7 +1,22 @@
 __pycache__/
 *.py[cod]
 .venv/
+build/
 dist/
 *.egg-info/
 .coverage
 work/
+
+# Runtime state is private and host-specific. Keep only sanitized fixtures.
+runtime/
+thread-state-data/
+changes.jsonl
+events.jsonl
+journal.jsonl
+*.lock
+*.pid
+*.log
+hooks-backup-*.json
+config.local.json
+snapshots/
+captures/private/
