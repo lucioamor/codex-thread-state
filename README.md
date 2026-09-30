@@ -2,7 +2,7 @@
 
 **Saiba exatamente em que estado cada conversa do Codex está.**
 
-Thread State v0.2 prefixa títulos com uma projeção determinística e reversível do estado estruturado:
+Thread State v1.0 prefixa títulos com uma projeção determinística e reversível do estado estruturado:
 
 ```text
 ▶ 🏆 [jevify] Implement auth migration
@@ -130,4 +130,10 @@ adaptador live por daemon, recorrência e motion são experimentais. Veja
 [docs/migration-v0.1-to-v0.2.md](docs/migration-v0.1-to-v0.2.md) e
 [docs/upstream-proposal.md](docs/upstream-proposal.md).
 
-Criado por [Lucio Amorim](https://linkedin.com/in/lucioamorim). Licença Apache 2.0.
+## Authorship and maintenance
+
+This project was created by [Lucio Amorim](https://linkedin.com/in/lucioamorim).
+
+When reusing, redistributing, or citing this work, keep the attribution credits and include a link to this repository.
+
+Licença Apache 2.0.

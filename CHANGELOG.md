@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0 — 2026-09-30
+
+- Preserved the existing lifecycle behavior as the user-designated stable baseline.
+- Re-ran all 23 repository tests successfully before appearance work.
+- Kept the historical source and documented live-validation limits intact.
+
 ## 0.2.0 — 2026-09-28
 
 - Replaced cross-process live-state guessing with an event-authoritative reducer and local store.

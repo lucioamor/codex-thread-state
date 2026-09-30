@@ -183,7 +183,7 @@ def migrate_legacy():
 
 def doctor():
     store = Store(); config = _config(store)
-    return {"version": "0.2.0", "root": str(store.root), "enabled": config["enabled"],
+    return {"version": "1.0.0", "root": str(store.root), "enabled": config["enabled"],
             "profile": config.get("profile", "default"), "threads": len(store.all()),
             "journalEntries": len(Journal(store.root / "journal.jsonl").rows()),
             "hooksFile": str(codex_home() / "hooks.json")}

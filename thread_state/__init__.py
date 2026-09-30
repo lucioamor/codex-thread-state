@@ -1,4 +1,4 @@
-"""Thread State v0.2 public API."""
+"""Thread State public API."""
 from .config import DEFAULT_CONFIG, load_config
 from .model import Evidence, Event, Modifier, State, Telemetry, ThreadRecord, ThreadView
 from .reducer import reduce
@@ -8,7 +8,7 @@ from .sources.app_server import terminal_state
 from .store import codex_home as home, lock, read_json, state_root as root, write_json
 from .install import install as _install_v2
 
-__version__ = "0.2.0"
+__version__ = "1.0.0"
 
 def main():
     from .cli import main as cli_main
