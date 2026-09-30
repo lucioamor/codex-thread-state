@@ -5,6 +5,7 @@
 - Preserved the existing lifecycle behavior as the user-designated stable baseline.
 - Re-ran all 23 repository tests successfully before appearance work.
 - Kept the historical source and documented live-validation limits intact.
+- Adopted CC BY-NC 4.0 for version 1.0.0 and subsequent releases at the author's request.
 
 ## 0.2.0 — 2026-09-28
 

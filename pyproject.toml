@@ -7,7 +7,7 @@ name = "codex-thread-state"
 version = "1.0.0"
 description = "Thread State — deterministic status badges for Codex threads"
 requires-python = ">=3.11"
-license = {text = "Apache-2.0"}
+license = {text = "CC-BY-NC-4.0"}
 authors = [{name = "Lucio Amorim"}]
 dependencies = []
 

@@ -136,4 +136,7 @@ This project was created by [Lucio Amorim](https://linkedin.com/in/lucioamorim).
 
 When reusing, redistributing, or citing this work, keep the attribution credits and include a link to this repository.
 
-Licença Apache 2.0.
+Licença [Creative Commons Atribuição-NãoComercial 4.0 Internacional](https://creativecommons.org/licenses/by-nc/4.0/).
+Permite compartilhar e adaptar com atribuição, para fins não comerciais.
+Aplica-se à versão 1.0.0 e às versões seguintes; os commits históricos preservam
+as licenças sob as quais foram disponibilizados.
