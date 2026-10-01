@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 — 2026-09-30
+
+- Added an opt-in, loopback-only appearance panel with responsive HTML/CSS and no web dependencies.
+- Added 10 styles and an offline searchable Unicode/emoji picker, including per-marker overrides.
+- Curated color palettes by semantic role and predominant emoji color, with explicit exceptions where no clear equivalent exists.
+- Added read-only previews, enabled/max-badge controls, atomic preference saves, snapshots and conflict-aware undo.
+- Made completed/unknown theme icons effective unless explicitly overridden by legacy configuration.
+- Kept custom marker history for safe title recognition after theme changes and undo.
+- Preserved hybrid defaults and all lifecycle classification; no bulk renaming or model calls occur in the panel.
+
 ## 1.0.0 — 2026-09-30
 
 - Preserved the existing lifecycle behavior as the user-designated stable baseline.

@@ -8,7 +8,7 @@ from typing import Any
 
 DEFAULT_CONFIG: dict[str, Any] = {
     "enabled": True, "style": "hybrid", "max_badges": 3, "maxTitleChars": 60,
-    "states": {"completed_marker": "✓", "unknown_marker": "?", "waiting_on_user": True},
+    "states": {"completed_marker": None, "unknown_marker": None, "waiting_on_user": True},
     "modifiers": {"goal": True, "artifacts": {"enabled": True, "extensions":
         ["pdf", "pptx", "docx", "xlsx", "zip", "png", "jpg", "svg", "html", "csv", "mp4"]},
         "recurring": False},

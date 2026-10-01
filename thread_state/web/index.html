@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thread State · Aparência</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div id="app" class="shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Thread State"><span class="brand-mark">◒</span> Thread State <span class="version">1.1</span></a>
+      <span class="local"><span class="online-dot"></span> No seu computador</span>
+    </header>
+    <main>
+      <div class="heading">
+        <div><p class="eyebrow">SEU FLUXO, SEUS SÍMBOLOS</p><h1>Aparência dos títulos</h1><p class="lead">Reconheça cada momento da conversa com um olhar.</p></div>
+        <label class="power"><input type="checkbox" id="enabled" role="switch"><span class="switch-track"></span><span id="power-label">Marcadores ativos</span></label>
+      </div>
+      <div class="workspace">
+        <section class="preferences" aria-label="Preferências de aparência">
+          <div class="section-heading"><h2>Escolha um estilo</h2><span class="quiet">Mesmos estados. Sua linguagem visual.</span></div>
+          <div id="themes" class="themes" role="group" aria-label="Estilos"></div>
+          <div class="custom-heading"><div><h2>Dê seu toque</h2><p class="quiet">Clique em um marcador para escolher ou colar outro.</p></div><button id="reset-icons" class="text-button" type="button">Restaurar símbolos do estilo</button></div>
+          <div class="settings-row"><label for="max-badges">Marcadores por título</label><select id="max-badges"><option value="1">1 · Essencial</option><option value="2">2 · Compacto</option><option value="3">3 · Equilibrado</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></div>
+          <p id="minimal-note" class="hint" hidden>O estilo minimalista sempre mostra apenas o estado principal.</p>
+          <div id="markers" class="markers"></div>
+          <details class="extras"><summary>Objetivos, entregáveis e telemetria</summary><p class="hint">Aparecem quando a evidência e as opções atuais do Thread State permitem.</p><div id="extra-markers" class="markers"></div></details>
+          <p class="hint">As paletas escolhem emojis pela função e pela cor predominante. O desenho e os tons podem variar conforme o sistema.</p>
+        </section>
+        <aside class="preview-panel" aria-label="Prévia dos títulos">
+          <div class="preview-heading"><span class="eyebrow">PRÉVIA AO VIVO</span><span class="sample-badge">Exemplos</span></div>
+          <h2 id="preview-theme">Seu estilo</h2><p class="quiet">Assim seus marcadores vão aparecer.</p>
+          <p id="palette-note" class="palette-note" hidden></p>
+          <div class="mock-sidebar"><div class="mock-project"><span>▱</span> sigma</div><div id="preview-list"></div></div>
+          <details class="all-states"><summary>Ver todos os estados</summary><div id="all-preview"></div></details>
+          <div class="preview-note"><span>ⓘ</span><p>“Turno concluído” significa que a resposta terminou. O projeto pode continuar pendente.</p></div>
+          <p id="disabled-note" class="notice" hidden>Ao salvar, as atualizações automáticas serão desligadas. Os marcadores já escritos nos títulos permanecem.</p>
+          <div class="save-explanation"><strong>Você está editando uma prévia.</strong><p>Salvar aplica as preferências aos próximos eventos das conversas. Títulos antigos não são reescritos em lote por este painel.</p></div>
+        </aside>
+      </div>
+    </main>
+    <footer class="savebar"><div><span id="dirty-dot" class="dirty-dot"></span><span id="save-state">Carregando preferências…</span></div><div class="actions"><button id="reload" class="text-button" type="button">Recarregar</button><button id="undo" class="secondary" type="button" disabled>Desfazer último salvamento</button><button id="save" class="primary" type="button" disabled>Salvar preferências <span>↗</span></button></div></footer>
+  </div>
+  <p id="feedback" class="feedback" role="status" aria-live="polite"></p>
+  <dialog id="picker" aria-labelledby="picker-title">
+    <div class="dialog-heading"><div><p class="eyebrow">PERSONALIZAR MARCADOR</p><h2 id="picker-title">Escolher símbolo</h2></div><button id="close-picker" class="icon-close" type="button" aria-label="Fechar seletor">×</button></div>
+    <div id="picker-tabs" class="picker-tabs" role="group" aria-label="Tipo de símbolo"></div>
+    <label class="search-wrap"><span>⌕</span><input id="picker-search" type="search" placeholder="Buscar símbolo, nome ou cor" aria-label="Buscar símbolo"></label>
+    <div id="picker-grid" class="picker-grid" role="group" aria-label="Símbolos disponíveis"></div>
+    <div class="custom-input"><label for="custom-symbol">Ou cole seu próprio símbolo</label><div><input id="custom-symbol" type="text" autocomplete="off" spellcheck="false" aria-describedby="custom-hint"><button id="apply-symbol" class="primary" type="button">Usar símbolo</button></div><p id="custom-hint" class="hint">Até 12 caracteres, sem espaços ou códigos de terminal.</p></div>
+    <p id="picker-error" class="picker-error" role="alert"></p>
+    <button id="default-symbol" class="text-button" type="button">Usar padrão do estilo neste estado</button>
+  </dialog>
+</body>
+</html>

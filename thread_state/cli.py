@@ -183,7 +183,8 @@ def migrate_legacy():
 
 def doctor():
     store = Store(); config = _config(store)
-    return {"version": "1.0.0", "root": str(store.root), "enabled": config["enabled"],
+    from . import __version__
+    return {"version": __version__, "root": str(store.root), "enabled": config["enabled"],
             "profile": config.get("profile", "default"), "threads": len(store.all()),
             "journalEntries": len(Journal(store.root / "journal.jsonl").rows()),
             "hooksFile": str(codex_home() / "hooks.json")}
@@ -210,12 +211,18 @@ def parser():
     capture_parser = sub.add_parser("capture"); capture_parser.add_argument("path", nargs="?")
     migrate = sub.add_parser("migrate"); migrate.add_argument("--from-legacy", action="store_true", required=True)
     sub.add_parser("doctor")
+    panel = sub.add_parser("panel", help="Open the local appearance controls")
+    panel.add_argument("--port", type=int, default=0)
+    panel.add_argument("--open", action="store_true", dest="open_browser")
     return root
 
 
 def main(argv=None):
     args = parser().parse_args(argv)
     if args.command == "hook": return hook_main()
+    if args.command == "panel":
+        from .panel import serve
+        return serve(args.port, args.open_browser)
     if args.command in ("install", "uninstall"): install(args.command == "uninstall"); return 0
     if args.command == "inspect": output(inspect_thread(args.thread_id, args.apply))
     elif args.command == "preview": output(preview())

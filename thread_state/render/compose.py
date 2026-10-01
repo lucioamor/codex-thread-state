@@ -20,7 +20,9 @@ def icons(config: dict) -> dict[str, str]:
 def recognized_markers(config: dict | None = None) -> set[str]:
     values = set()
     for theme in THEMES.values(): values.update(theme.values())
-    if config: values.update(icons(config).values())
+    if config:
+        values.update(icons(config).values())
+        values.update(config.get("appearance_marker_history", []))
     values.update(("◕", "●", "⏱", "🏁", "🔵", "▷"))
     return {x for x in values if x}
 
@@ -43,11 +45,11 @@ def _badges(view: ThreadView, config: dict) -> list[tuple[str, str]]:
     context = config.get("telemetry", {}).get("context", {})
     pressure = view.telemetry.context_pressure
     if context.get("enabled") and pressure is not None:
-        if pressure >= context.get("critical", .90): result.append(("context", "●"))
-        elif pressure >= context.get("warn", .75): result.append(("context", "◕"))
+        if pressure >= context.get("critical", .90): result.append(("context", theme["context_critical"]))
+        elif pressure >= context.get("warn", .75): result.append(("context", theme["context_warn"]))
     if view.telemetry.long_running and config.get("telemetry", {}).get("long_running", {}).get("enabled"):
-        result.append(("long_running", "⏱"))
-    maximum = max(1, int(config.get("max_badges", 3)))
+        result.append(("long_running", theme["long_running"]))
+    maximum = 1 if config.get("style") == "minimal" else max(1, int(config.get("max_badges", 3)))
     while len(result) > maximum:
         for name in DROP_ORDER:
             found = next((i for i, item in enumerate(result) if item[0] == name), None)

@@ -2,7 +2,9 @@
 
 **Saiba exatamente em que estado cada conversa do Codex está.**
 
-Thread State v1.0 prefixa títulos com uma projeção determinística e reversível do estado estruturado:
+Thread State v1.1 prefixa títulos com uma projeção determinística e reversível do estado estruturado.
+A [versão 1.0 estável](https://github.com/lucioamor/codex-thread-state/releases/tag/v1.0.0)
+preserva o comportamento anterior ao painel de aparência.
 
 ```text
 ▶ 🏆 [jevify] Implement auth migration
@@ -12,6 +14,42 @@ Thread State v1.0 prefixa títulos com uma projeção determinística e reversí
 ```
 
 Não é um componente oficial da OpenAI. O runtime usa apenas a biblioteca padrão do Python, não chama modelos, não classifica prosa, não faz polling e não cria serviço em segundo plano. A origem do estado presente são os eventos; leituras de outro App Server só confirmam estados terminais persistidos.
+
+## Painel de aparência
+
+```sh
+python thread_state.py panel --open
+```
+
+Ou abra `scripts/thread-state-panel.cmd` no Windows. O painel roda em loopback
+enquanto o comando estiver aberto; encerre com `Ctrl+C`. Para abrir dentro do
+Codex, execute `python thread_state.py panel`, copie a URL gerada e abra-a no
+navegador interno, à direita ou no painel inferior. A URL contém a chave local
+temporária de acesso ao painel. Não é necessário instalar dependências web.
+
+- **10 estilos:** híbrido, monocromático, colorido, minimalista, enterprise,
+  divertido, vermelho, verde, azul e amarelo.
+- **Picker offline:** símbolos Unicode e emojis, com busca por nome/cor
+  e campo para colar um símbolo próprio em cada estado ou modificador.
+- **Prévia sem escrita:** mostra exemplos completos antes de salvar.
+- **Controles:** ligar/desligar, escolher o máximo de marcadores e restaurar
+  símbolos do estilo. Trocar de estilo limpa as personalizações da prévia.
+- **Salvar e desfazer:** cada salvamento preserva a configuração alheia, cria
+  snapshot e detecta alterações concorrentes. Desfazer restaura as preferências
+  anteriores e conserva o histórico de símbolos para reconhecer títulos antigos.
+
+As preferências salvas valem nos próximos eventos. O painel não renomeia chats
+em lote; desligar também não remove marcadores existentes. Os exemplos de prévia
+são fictícios, e `✓` indica o término do turno, não a conclusão do projeto.
+
+Os estilos por cor selecionam emojis pela função e pela cor predominante:
+❌/💯 para falha/conclusão no vermelho, 🌱/✅ para pendência/conclusão no verde,
+🌊/💤 para atividade/pausa no azul e ⚡/🌟 para atividade/conclusão no amarelo.
+Onde não há equivalente claro, preservam um emoji de referência; o painel
+explica essas exceções. O monocromático usa símbolos Unicode de texto.
+O desenho final depende das fontes do sistema. O estilo minimalista
+sempre mostra apenas o estado principal. O painel é responsivo e funciona como
+página local; não injeta botões, tooltips ou controles na interface nativa do Codex.
 
 ## Instalação e uso
 
@@ -54,7 +92,7 @@ O arquivo é `$CODEX_HOME/thread-state/config.json`. Valores omitidos recebem os
   "style": "hybrid",
   "max_badges": 3,
   "maxTitleChars": 60,
-  "states": {"completed_marker": "✓", "unknown_marker": "?", "waiting_on_user": true},
+  "states": {"completed_marker": null, "unknown_marker": null, "waiting_on_user": true},
   "modifiers": {"goal": true, "artifacts": {"enabled": true, "extensions": ["pdf", "pptx", "docx", "xlsx", "zip", "png", "jpg", "svg", "html", "csv", "mp4"]}, "recurring": false},
   "telemetry": {"context": {"enabled": true, "warn": 0.75, "critical": 0.90}, "long_running": {"enabled": false, "minutes": 15}},
   "motion": "off",
@@ -66,7 +104,12 @@ O arquivo é `$CODEX_HOME/thread-state/config.json`. Valores omitidos recebem os
 }
 ```
 
-Temas: `emoji`, `hybrid` e `symbols`. Perfis: `minimal`, `default`, `full` e `lab`; arquivos em `profiles/<nome>.json` podem sobrescrever perfis locais.
+Temas: `hybrid`, `symbols`, `emoji`, `minimal`, `enterprise`, `playful`,
+`red`, `green`, `blue` e `yellow`. Perfis: `minimal`, `default`, `full` e `lab`;
+arquivos em `profiles/<nome>.json` podem sobrescrever perfis locais.
+Os campos `completed_marker` e `unknown_marker`, quando não nulos, continuam
+sobrescrevendo o tema por compatibilidade. O painel transfere essa personalização
+para `icons` ao salvar. O tema híbrido padrão mantém `✓` e `?`.
 
 A tag `[slug]` é resolvida nesta ordem: tag editorial já existente,
 `projectRoots`, slug do remote Git e nome da pasta do checkout. Defina
@@ -76,6 +119,7 @@ A tag `[slug]` é resolvida nesta ordem: tag editorial já existente,
 
 ```text
 thread-state preview
+thread-state panel [--open] [--port PORT]
 thread-state status | doctor
 thread-state inspect UUID [--apply]
 thread-state snapshot create RÓTULO
