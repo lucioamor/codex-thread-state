@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Relicensed under Apache License 2.0, replacing CC BY-NC 4.0.
+
 ## 1.1.0 — 2026-09-30
 
 - Added an opt-in, loopback-only appearance panel with responsive HTML/CSS and no web dependencies.
