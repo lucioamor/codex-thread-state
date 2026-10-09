@@ -1,0 +1,96 @@
+{
+  "description": "Deterministic thread status titles without model inference.",
+  "hooks": {
+    "Interrupt": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 3,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python /path/to/codex-thread-state/thread_state.py hook",
+            "async": true,
+            "timeout": 30,
+            "statusMessage": "Thread State"
+          }
+        ]
+      }
+    ]
+  }
+}

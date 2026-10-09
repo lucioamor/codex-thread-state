@@ -1,0 +1,18 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "thread-state",
+  "version": "1.2.0",
+  "description": "Deterministic, reversible status badges for Codex conversation titles.",
+  "extensions": {
+    "com.openai": {
+      "hooks": "./hooks/hooks.json",
+      "interface": {
+        "displayName": "Thread State",
+        "shortDescription": "Deterministic status badges for Codex chats",
+        "developerName": "Lucio Amorim",
+        "category": "Productivity",
+        "capabilities": ["Read", "Write"]
+      }
+    }
+  }
+}

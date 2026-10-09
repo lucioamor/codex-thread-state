@@ -1,0 +1,12 @@
+{
+  "name": "codex-thread-state",
+  "interface": {"displayName": "Thread State"},
+  "plugins": [
+    {
+      "name": "thread-state",
+      "source": {"source": "local", "path": "./"},
+      "policy": {"installation": "AVAILABLE", "authentication": "ON_INSTALL"},
+      "category": "Productivity"
+    }
+  ]
+}

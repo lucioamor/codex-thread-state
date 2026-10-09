@@ -1,8 +1,13 @@
 # Thread State
 
-**Saiba exatamente em que estado cada conversa do Codex está.**
+**Badges de estado para os títulos das suas conversas no Codex.**
 
-Thread State v1.1 prefixa títulos com uma projeção determinística e reversível do estado estruturado.
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](pyproject.toml)
+
+Thread State v1.2 é um plugin do Codex que prefixa títulos com uma projeção determinística e reversível do estado estruturado.
+Inclui sete hooks de ciclo de vida, o runtime Python e uma skill de configuração.
+Veja [instalação do plugin e migração](docs/plugin-installation.md).
 A [versão 1.0 estável](https://github.com/lucioamor/codex-thread-state/releases/tag/v1.0.0)
 preserva o comportamento anterior ao painel de aparência.
 
@@ -53,16 +58,49 @@ página local; não injeta botões, tooltips ou controles na interface nativa do
 
 ## Instalação e uso
 
-Requisitos: Python 3.11+ e um executável nativo do Codex com App Server.
+### Instalar o plugin
+
+Requisitos: Python 3.11+ disponível como `python` no PATH do Codex, uma versão
+do Codex com plugins e hooks e um executável nativo com App Server.
+
+```sh
+codex plugin marketplace add lucioamor/codex-thread-state --ref main
+codex plugin add thread-state@codex-thread-state
+```
+
+Reinicie/recarregue o Codex, revise os sete hooks e confie nas definições
+atuais pelo gerenciador de hooks do host (`/hooks` na CLI). Comece um chat novo
+para verificar a entrega dos eventos. Instalar o plugin não concede confiança
+automaticamente. Não exige chave de API nem instalação de dependências pip.
+
+Já usa a instalação manual? Siga o [guia de migração e rollback](docs/plugin-installation.md)
+para substituir os registros antigos sem executar hooks duplicados.
+O guia também cobre instalação local, remoção e geração de ZIP.
+
+O plugin pode ser distribuído pelo GitHub. Atualmente, plugins com hooks não
+são elegíveis para o diretório público oficial; veja a
+[documentação de plugins](https://developers.openai.com/plugins/build/plugins).
+
+### Prévia e desenvolvimento
+
+No checkout ou na pasta do plugin, execute:
 
 ```sh
 python -m unittest discover -s tests -v
 python thread_state.py preview
 python thread_state.py inspect THREAD_UUID
-python thread_state.py install
+python scripts/build_plugin.py
 ```
 
-`install` tira snapshot, mescla handlers marcados `Thread State` em `$CODEX_HOME/hooks.json` e preserva handlers alheios. Revise e aprove as definições no caminho de confiança do host; não contorne essa etapa. Uma instalação editável é opcional: `python -m pip install -e .`.
+`preview` não altera títulos; `inspect` só escreve com `--apply`. O gerador
+produz `dist/thread-state-1.2.0.zip` com uma lista explícita de arquivos públicos.
+
+### Instalação manual legada
+
+`python thread_state.py install` continua disponível para quem não usa o plugin.
+Ele tira snapshot, mescla handlers marcados `Thread State` em `$CODEX_HOME/hooks.json`
+e preserva handlers alheios. `uninstall` remove esses registros manuais.
+Não execute `install` se o plugin estiver habilitado.
 
 ## Taxonomia
 

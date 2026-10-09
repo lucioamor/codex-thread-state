@@ -37,3 +37,15 @@ quota failure delivery, or macOS/Linux integration.
 The synthetic event is not proof of real lifecycle delivery. The desktop session
 that performed installation must reload before its automatic hooks use the new
 configuration; observe the next real prompt/stop after reload.
+
+## Plugin 1.2.0 — 2026-10-09
+
+- 39 tests passed, including relocated ZIP execution under a path with spaces
+  and preservation of all seven existing hook handler options.
+- CLI marketplace registration and plugin installation succeeded with isolated
+  CODEX_HOME; no active user hook configuration was changed.
+- Local CLI installation copies ignored source files too. For local distribution,
+  install from the allowlisted archive, not a private development checkout.
+- Exact current hooks were backed up locally and verified byte for byte; the
+  tracked historical JSON replaces personal paths only.
+- Desktop trust review and real lifecycle delivery for the plugin remain untested.

@@ -4,6 +4,13 @@
 
 - Relicensed under Apache License 2.0, replacing CC BY-NC 4.0.
 
+## 1.2.0 — 2026-10-09
+
+- Packaged the existing runtime and seven lifecycle hooks as a Codex plugin.
+- Added a repository marketplace, installation/migration guide and allowlisted ZIP builder.
+- Preserved a sanitized snapshot of the manual hooks; private machine paths stay outside Git.
+- Kept existing local state and the manual installer compatible.
+
 ## 1.1.0 — 2026-09-30
 
 - Added an opt-in, loopback-only appearance panel with responsive HTML/CSS and no web dependencies.

@@ -5,7 +5,10 @@ description: Configure, inspect, troubleshoot or uninstall Thread State determin
 
 # Thread State
 
-Read the repository README before installation or migration. Run the repository's
+Read README.md and docs/plugin-installation.md from the plugin root before installation or migration.
+Resolve script paths relative to the installed plugin root, never the user's working directory.
+Do not run `install` for plugin installations: it creates duplicate manual hooks.
+Run the repository's
 `thread_state.py` CLI with Python 3.11+. Start with `doctor` and `preview`.
 `inspect THREAD_ID` is a dry run; `--apply` writes the title. Hooks invoke the
 script directly without this skill.
